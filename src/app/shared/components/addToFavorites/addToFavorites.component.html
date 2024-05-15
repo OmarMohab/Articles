@@ -1,0 +1,4 @@
+<button mat-button (click)="handleLike()">
+    <mat-icon>{{ isFavorited ? 'favorite': 'favorite_border' }}</mat-icon>
+    {{ favoritesCount }}
+</button>

@@ -1,0 +1,14 @@
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.banner {
+    align-items: center;
+    text-align: center;
+    margin-top: 16px;
+}
+.feed {
+    width: 100%;
+}

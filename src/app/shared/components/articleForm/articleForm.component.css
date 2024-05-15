@@ -1,0 +1,22 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+}
+  
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.form-title {
+    justify-self: center;
+    margin-bottom: 10px;
+}

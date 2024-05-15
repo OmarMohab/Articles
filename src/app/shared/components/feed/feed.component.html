@@ -1,0 +1,44 @@
+<ng-container *ngIf="data$ | async as data">
+  <div class="feed">
+    <mat-spinner *ngIf="data.isLoading" diameter="50"></mat-spinner>
+    <app-error-message *ngIf="data.error" [message]="data.error"></app-error-message>
+    <div *ngIf="data.feed">
+        <mat-card *ngFor="let article of data.feed.articles">
+        <a [routerLink]="['/profiles', article.author.username]">
+          <mat-card-header>
+            <img mat-card-avatar [src]="article.author.image" class="example-header-image">
+            <mat-card-title>{{ article.author.username }}</mat-card-title>
+            <mat-card-subtitle>{{ article.createdAt | date }}</mat-card-subtitle>
+          </mat-card-header>
+        </a>
+          <a [routerLink]="['/articles', article.slug]">
+            <mat-card-content>
+              <h1>{{ article.title }}</h1>
+              <p>
+                {{ article.description }}
+              </p>
+              <div class="meta">
+                <span style="align-self: last baseline;">Read more...</span>
+                <app-tag-list [tags]="article.tagList"></app-tag-list>
+              </div>
+            </mat-card-content>
+          </a>
+          <mat-card-actions>
+            <app-add-to-favorites 
+              [isFavorited]="article.favorited"
+              [favoritesCount]="article.favoritesCount"
+              [articleSlug]="article.slug"
+            >
+            </app-add-to-favorites>
+          </mat-card-actions>
+        </mat-card>
+        <app-paginator
+          [total]="data.feed.articlesCount"
+          [limit]="limit"
+          [url]="baseUrl"
+          [currentPage]="currentPage"
+        >
+        </app-paginator>
+    </div>
+  </div>
+</ng-container>

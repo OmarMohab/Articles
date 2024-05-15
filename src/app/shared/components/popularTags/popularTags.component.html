@@ -1,0 +1,15 @@
+<ng-container *ngIf="data$ | async as data">
+    <div class="tags">
+        <h1>Popular Tags</h1>
+        <mat-spinner *ngIf="data.isLoading" diameter="50"></mat-spinner>
+        <app-error-message *ngIf="data.error" [message]="data.error"></app-error-message>
+        <mat-chip-set>
+            <a
+                *ngFor="let popularTag of data.popularTags"
+                [routerLink]="['/tags', popularTag]"
+            >
+                <mat-chip>{{ popularTag }}</mat-chip>
+            </a>
+        </mat-chip-set>
+    </div>
+</ng-container>

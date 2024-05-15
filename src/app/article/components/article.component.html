@@ -1,0 +1,36 @@
+<ng-container *ngIf="data$ | async as data">
+	<div class="article-page">
+		<div class="article-title">
+			<h1>{{ data.article?.title }}</h1>
+		</div>
+		<!-- Article Card -->
+		<mat-card class="article" *ngIf="data.article">
+			<a [routerLink]="['/profiles', data.article.author.username]">
+				<mat-card-header>
+					<img mat-card-avatar [src]="data.article.author.image" class="example-header-image">
+					<mat-card-title>{{ data.article.author.username }}</mat-card-title>
+					<mat-card-subtitle>{{ data.article.createdAt | date }}</mat-card-subtitle>
+					<span class="example-spacer"></span>
+				</mat-card-header>
+			</a>
+			<div *ngIf="data.isAuthor">
+				<button mat-flat-button (click)="deleteArticle()" color="warn" style="margin: 10px 10px;">Delete Article</button>
+				<a [routerLink]="['/articles', data.article.slug, 'edit']" mat-flat-button color="primary" style="margin: 10px 10px;">Edit Article</a>
+			</div>
+			<mat-card-content>
+				<p>
+					{{ data.article.body }}
+				</p>
+			</mat-card-content>
+			<div class="tags">
+				<a
+					*ngFor="let tag of data.article.tagList"
+				> 
+					<mat-chip-set>
+						<mat-chip>{{ tag }}</mat-chip>
+					</mat-chip-set>
+				</a>
+					</div>
+		</mat-card>
+	</div>
+</ng-container>

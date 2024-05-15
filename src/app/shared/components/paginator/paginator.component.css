@@ -1,0 +1,19 @@
+.paginator {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.paginator li {
+    padding: 8px 8px;
+    border-style: solid;
+    &:hover {
+        background-color: gray;
+    }
+}
+
+.paginator a {
+    color: black;
+    text-decoration: none;
+}

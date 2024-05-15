@@ -1,0 +1,14 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+.nav-link {
+    text-decoration: none;
+    margin-right: 20px;
+    color: white;
+}
+
+.username {
+    @media screen and (max-width: 500px) {
+        display: none;
+    }
+}

@@ -1,0 +1,57 @@
+<ng-container *ngIf="data$ | async as data">
+    <div class="form-container">
+        <form class="login-form" [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+            <h1 class="form-title">Log In</h1>
+            <a class="form-title" routerLink="/register">Don't have an account?</a>
+            <app-backend-error-messages
+                *ngIf="data.backendErrors"
+                [backendErrors]="data.backendErrors"
+            >
+            </app-backend-error-messages>
+            <!-- Email Field -->
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Email" formControlName="email">
+                @if (form.controls['email'].hasError('required')) {
+                  <mat-error>
+                    Email is <strong>required</strong>
+                  </mat-error>
+                }
+            </mat-form-field>
+            <!-- End Email Field -->
+            <!-- Password Field -->
+            <!-- <mat-form-field class="full-width">
+            <input matInput placeholder="Password" formControlName="password">
+            @if (form.controls['password'].hasError('required')) {
+                <mat-error>
+                Password is <strong>required</strong>
+                </mat-error>
+            }
+            </mat-form-field> -->
+            <!-- End Password Field -->
+            <!-- Password Field -->
+            <mat-form-field class="full-width">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                @if (form.controls['password'].hasError('required')) {
+                    <mat-error>
+                        Password is <strong>required</strong>
+                    </mat-error>
+                }
+            </mat-form-field>
+            <!-- End Password Field -->
+            <div class="buttons">
+                <button
+                    mat-raised-button
+                    color="primary"
+                    type="submit"
+                    [disabled]="data.isSubmitting"
+                >
+                    Log In
+                </button>
+            </div>
+        </form>
+    </div>
+</ng-container>

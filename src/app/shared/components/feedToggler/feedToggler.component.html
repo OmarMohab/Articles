@@ -1,0 +1,28 @@
+<nav>
+    <a
+        *ngIf="currentUser$ | async"
+        mat-raised-button 
+        routerLink="/feed"
+        routerLinkActive="active"
+        
+    >
+        Your Feed
+    </a>
+    <a 
+        mat-raised-button
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        queryParamsHandling="merge"
+    >
+        Global Feed
+    </a>
+    <a
+        mat-raised-button
+        *ngIf="tagName" 
+        [routerLink]="['/tags', tagName]"
+        routerLinkActive="active"
+    >
+        {{ tagName }}
+    </a>
+</nav>

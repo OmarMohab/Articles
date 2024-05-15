@@ -1,0 +1,66 @@
+<div class="form-container">
+	<app-backend-error-messages
+		*ngIf="errors"
+		[backendErrors]="errors"
+	>
+	</app-backend-error-messages>
+	<form class="login-form" [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+		<h1>Create an article</h1>
+		<!-- Title Field -->
+		<mat-form-field class="full-width">
+			<input matInput placeholder="Article Title" formControlName="title">
+			@if (form.controls['title'].hasError('required')) {
+				<mat-error>
+				Title is <strong>required</strong>
+				</mat-error>
+			}
+		</mat-form-field>
+		<!-- End Title Field -->
+		<!-- Description Field -->
+		<mat-form-field class="full-width">
+			<input matInput placeholder="What is this article about?" formControlName="description">
+			@if (form.controls['description'].hasError('required')) {
+				<mat-error>
+				Description is <strong>required</strong>
+				</mat-error>
+			}
+		</mat-form-field>
+		<!-- End Description Field -->
+		<!-- Body Field -->
+		<mat-form-field class="full-width">
+			<mat-label>Textarea</mat-label>
+			<textarea 
+				matInput 
+				placeholder="Write you article (in markdown)"
+				formControlName="body"
+			>
+			</textarea>
+			@if (form.controls['body'].hasError('required')) {
+				<mat-error>
+					Body is <strong>required</strong>
+				</mat-error>
+			}
+		</mat-form-field>
+		<!-- End Body Field -->
+		<!-- Tags Field -->
+		<mat-form-field class="full-width">
+			<input matInput placeholder="Enter Tags" formControlName="tagList">
+			@if (form.controls['tagList'].hasError('required')) {
+				<mat-error>
+					Tags are <strong>required</strong>
+				</mat-error>
+			}
+		</mat-form-field>
+		<!-- End Tags Field -->
+		<div>
+			<button
+				mat-raised-button
+				color="primary"
+				type="submit"
+				[disabled]=" form.invalid || isSubmitting"
+			>
+				Publish Article
+			</button>
+		</div>
+	</form>
+</div>

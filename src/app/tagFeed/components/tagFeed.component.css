@@ -1,0 +1,11 @@
+.home-page {
+    display: flex;
+}
+
+.feed {
+    flex: 6;
+}
+
+.tags {
+    flex: 1
+}

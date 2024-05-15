@@ -1,0 +1,15 @@
+.home-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.feed {
+    flex: 5;
+}
+
+.tags {
+    flex: 1;
+    margin-bottom: 20px;
+}
